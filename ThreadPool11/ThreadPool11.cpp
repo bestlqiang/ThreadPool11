@@ -138,7 +138,6 @@ void  GetRet(int in,int & out)
 
 int main()
 {
-	
 	int ret = 0;
 	thread th(GetRet,5, ref(ret));
 	th.join();
