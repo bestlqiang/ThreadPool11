@@ -128,7 +128,6 @@ int main()
 	return 0;
 }
 */
-
 #include <thread>
 
 void  GetRet(int in,int & out)
