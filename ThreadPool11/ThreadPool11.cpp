@@ -84,8 +84,7 @@ return 0;
 
 */
 
-
-
+/*
 std::mutex g_mutex;
 typedef lock_guard<mutex>  LockGuard_Mutex;
 
@@ -109,7 +108,7 @@ void testFunc()
 		LockGuard_Mutex lock(g_mutex);
 		std::cout << "testFunc() [" << i << "] at thread [ " << std::this_thread::get_id() << "] output" << std::endl;
 	}
-
+	
 }
 
 
@@ -123,7 +122,27 @@ int main()
 	for (int i = 0; i < 5; i++)
 		thread_pool.add_task(testFunc);
 
+	thread_pool.add_task(priorityFunc);
+
 	getchar();
+	return 0;
+}
+*/
+
+#include <thread>
+
+void  GetRet(int in,int & out)
+{
+	out = in * 2;
+}
+
+int main()
+{
+	
+	int ret = 0;
+	thread th(GetRet,5, ref(ret));
+	th.join();
+	cout << ret << endl;
 	return 0;
 }
 
